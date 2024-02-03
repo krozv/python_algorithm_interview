@@ -13,10 +13,10 @@ class GroupAnagrams:
                 anagram[key] = [strs[i]]
             # key가 있을 경우
             else:
-                anagram[key].append(strs[i])
+                anagram[key] += [strs[i]]   # append method 사용 안하고 결합 연산자 + 사용 변경
         anagram_list = []
         for value in anagram.values():
-            anagram_list.append(value)
+            anagram_list += [value]
         return anagram_list
 
 
