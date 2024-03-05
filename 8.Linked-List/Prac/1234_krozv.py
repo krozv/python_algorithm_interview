@@ -57,23 +57,54 @@ for t in range(1, T+1):
     lst = LinkedList()
     head = None
     node = head
+    # 연결리스트로 저장
     for num in num_list:
         if head is None:
             head = Node(num)
             node = head
         else:
-            if node.data == num:
-                node = prev
-                prev =
+            node.next = Node(num)
+            node = node.next
+    last = None
+    while not last:
 
-
+        node = head
+        prev = None
+        while node.next:
+            k = head
+            # print(node.data)
+            if node.data == node.next.data:
+                if prev and node.next.next:
+                    print(1)
+                    # node = node.next
+                    node = node.next.next
+                    # print(node.data)
+                    prev.next = node
+                # node.next.next가 없을 때
+                elif prev and not node.next.next:
+                    print(2)
+                    prev.next = None
+                    break
+                # prev가 없을때(처음 시작하자마자 동일값인 경우)
+                elif node.next.next:
+                    print(3)
+                    head = node.next.next
+                    node = head
+                    # 여기 수정해야함
             else:
-                node.next = Node(num)
                 prev = node
                 node = node.next
-
-
-            # print(head.data)
-        # print(head, head.data)
-        # node = node.next
-    print(lst)
+            res = 'Head'
+            while k is not None:
+                res += ' -> ' + str(k.data)
+                k = k.next
+            print(res)
+            print(node.data)
+            if not node.next:
+                print('test')
+    print(f'#{t}', end=' ')
+    while head:
+        print(head.data, end='')
+        head = head.next
+    print()
+    # print(head)
