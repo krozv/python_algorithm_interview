@@ -12,31 +12,14 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        tail = None
-        if head:
-            t = head.val
-            if not head.next:
-                tail = head.val
-            self.reverseList(head.next)
-            l2 = ListNode(t)
-            if l2 and tail and l2.val == tail:
-                return l2
-            l2 = l2.next
-        return l2
+        node, prev = head, None
+
+        while node:
+            next, node.next = node.next, prev
+            prev, node = node, next
+        return prev
 
 
-
-
-# head = [1, 2, 3, 4, 5]
-# # 리스트 head를 연결리스트로 변경
-# lst = ListNode(head[0])
-# head.pop(0)
-# print(lst.val)
-# while head:
-#     lst.next = ListNode(head[0])
-#     head.pop(0)
-#     # print(lst.next.val)
-#     lst = lst.next
 
 l1 = ListNode(1)
 l1.next = ListNode(2)
