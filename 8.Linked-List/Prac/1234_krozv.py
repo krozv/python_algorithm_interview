@@ -46,11 +46,7 @@ for t in range(1, T+1):
             else:
                 prev = node
                 node = node.next
-            # res = 'Head'
-            # while k is not None:
-            #     res += ' -> ' + str(k.data)
-            #     k = k.next
-            # print(res)
+
         if test is False:
             break
     print(f'#{t}', end=' ')

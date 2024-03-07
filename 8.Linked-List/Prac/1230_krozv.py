@@ -27,9 +27,26 @@ for t in range(1, T+1):
         node = node.next
 
     for i in range(M):
-        c = command.popleft()
-        # 명령어일 경우
+        c = int(command.popleft())
+        prev = None
+        node = head
         if c == 'I':
+            # x번째 암호문 바로 다음에 y개의 암호문 삽입
+            x = int(command.popleft())
+            for _ in range(x):
+                prev, node = node, node.next
+            y = int(command.popleft())
+            for _ in range(y):
+                if prev is None:
+
+                new_node = Node(y)
+                prev.next = new_node
+                new_node.next = node
+                prev = prev.next
+                node = node.next
+
+
+
 
         elif c == 'D':
         elif c == 'A':
